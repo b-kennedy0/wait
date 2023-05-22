@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Appointment Waiting List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://bradleykennedy.co.uk/assets/css/wait.css">
+</head>
+
+<body>
+  <h1 id="page-title"></h1>
+  <div id="center-container">
+    <button id="checkin-button">Check-in</button>
+  </div>
+  <h2 class="section-heading">In Meeting Now</h2>
+  <div id="meeting-section">
+    <div id="meeting-list"></div>
+  </div>
+
+  <hr>
+
+  <h2 class="section-heading">Queue</h2>
+  <div id="queue-section">
+    <div id="queue-list"></div>
+  </div>
+  <!-- The form element -->
+  <div id="checkin-form-overlay" class="checkin-form-popup-overlay"></div>
+  <div id="checkin-form-popup" class="checkin-form-popup">
+    <form id="checkin-form">
+      <label for="student-number">Student Number:</label>
+      <input type="number" id="student-number" placeholder="Enter Student Number" min="1" required>
+      <button type="submit" id="checkin-submit-button">Check-in</button>
+      <button type="button" id="close-button">Close</button>
+    </form>
+  </div>
+  <script src="https://bradleykennedy.co.uk/assets/js/wait.js" type="text/javascript"></script>
+</body>
+
+</html>
