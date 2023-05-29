@@ -6,24 +6,17 @@ const pollingInterval = 30000;
 let waitingList = [];
 let inMeetingList = [];
 
-// Function to fetch the latest data from the Google Sheet
+// Function to fetch the latest data from the Edge Config Store
 function fetchData() {
-  Promise.all([
-    fetch(inMeetingListURL),
-    fetch(waitingListURL)
-  ])
-    .then(([inMeetingResponse, waitingResponse]) =>
-      Promise.all([inMeetingResponse.json(), waitingResponse.json()])
-    )
-    .then(([inMeetingData, waitingData]) => {
-      inMeetingList = inMeetingData;
-      waitingList = waitingData;
-      renderInMeeting();
-      renderQueue();
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+  const edgeConfigStoreData = edgeConfig.get(); // Assuming you have access to the Edge Config Store data through the `edgeConfig` object
+
+  const inMeetingData = edgeConfigStoreData.inMeetingData;
+  const waitingData = edgeConfigStoreData.waitingListData;
+
+  inMeetingList = inMeetingData;
+  waitingList = waitingData;
+  renderInMeeting();
+  renderQueue();
 }
 
 // Function to display a message with an icon
